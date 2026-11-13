@@ -54,22 +54,18 @@ _Avoid_: result, recommendation (as a noun for a single Exhibit), hit
 The Matches for a Visit, ordered by relevance and then Gallery order.
 _Avoid_: route, trasa, itinerary
 
-**Visit link**:
-The unguessable address of one Visit; whoever has it can reopen that Visit's Match list.
-_Avoid_: session URL, share link
-
 **Ask more**:
 The handoff from an Exhibit to an external AI provider with a prompt about that Exhibit.
 _Avoid_: AI chat, chatbot
 
 ### Reporting
 
-**Operator dashboard**:
-The Operator's aggregate view of Visit data (popular Interests, most opened Exhibits, Visit counts), with CSV export; groups below a minimum size are not shown.
-_Avoid_: analytics, reports
+**Visit export**:
+A CSV of anonymised Visit data the Operator downloads to share with the museum. A filterable dashboard is a later addition.
+_Avoid_: report, analytics
 
 ## Out of scope by definition
 
 - A **route** (ordered walking path) and turn-by-turn indoor navigation are not part of the product yet; a Match list is not a route.
-- In-app AI chat, native app, offline/PWA, Visitor accounts, editable Intake questions and CSV import are outside the first version.
+- In-app AI chat, native app, offline/PWA, Visitor accounts, editable Intake questions a Visit dashboard (CSV export only at first) and CSV catalog import are outside the first version.
 - Consent wording, retention period, and how a museum receives Visit data are Instance policy, not decided here.

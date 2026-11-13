@@ -15,6 +15,9 @@ User asked to expand the questions; then told the run to proceed autonomously, s
 - Own simple CRUD under /operator (no admin gem), language tabs.
 - Propshaft + plain CSS tokens (DESIGN.md Bauhaus as default theme), Hotwire via importmap, no Tailwind/Node; a11y rules mandatory.
 - Visit identified by URL token (ADR 0009); events recorded: Intake, Match list shown, Exhibit opened, Ask more (link or copy), language, time.
-- Operator dashboard + CSV, min group size 5, retention per Instance via Solid Queue job; no API.
+- Visit export CSV (dashboard later), min group size 5, retention per Instance via Solid Queue job; no API.
 - SQLite single machine + Kamal (ADR 0007); MIT public core (ADR 0008); seeds-only fictional catalog; English docs/code, Polish only in locales; v1 non-goals listed in GLOSSARY.
 - Open: consent/legal wording, backup tool choice, exact retention default.
+
+## Round 2 answers from the user
+Q9-Q12, Q14 yes. Corrections: Q13 use a ready-made admin gem (ADR 0004 updated); Q15 option (a) signed session cookie (ADR 0009 rewritten, Visit link term removed); Q16 CSV export now, filterable dashboard later (glossary: Visit export); Q17 keep SQLite but leave deployment/CD open, issue #1 created (ADR 0007 rewritten, Kamal/VPS dropped). Q18-Q21 not answered: recommended answers kept.
