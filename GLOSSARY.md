@@ -7,61 +7,65 @@ A web app that helps a museum Visitor decide what to see: the Visitor states int
 ### People
 
 **Visitor**:
-An anonymous person using the app during a museum visit. Has no account.
+An anonymous person using the app during a museum visit. Has no account. In Polish UI: *Odwiedzający*.
 _Avoid_: user, guest, customer
 
 **Operator**:
-The single trusted person who maintains an Instance's catalog and configuration.
+The single trusted person who maintains an Instance's catalog and configuration. In Polish UI: *Operator*.
 _Avoid_: admin, editor, staff
 
 ### Catalog
 
 **Instance**:
-One deployment of Open Museum configured for one museum (name, languages, theme, catalog).
+One deployment of Open Museum configured for one museum (name, languages, theme, catalog). In Polish UI: *Instancja*.
 _Avoid_: tenant, site, fork
 
 **Exhibit**:
-One thing a Visitor can go and see, with a description and a location.
+One thing a Visitor can go and see, with a description and a location. In Polish UI: *Eksponat*.
 _Avoid_: item, eksponat (outside Polish UI copy), installation
 
 **Gallery**:
-A named area of the museum that holds Exhibits, with a floor label and a place in the visiting order.
+A named area of the museum that holds Exhibits, with a floor label and a place in the visiting order. In Polish UI: *Galeria*.
 _Avoid_: exhibition part, exhibition, zone, section
 
 **Interest**:
-A topic a Visitor can pick (e.g. "engineering"); Exhibits are associated with Interests.
+A topic a Visitor can pick (e.g. "engineering"); Exhibits are associated with Interests. In Polish UI: *Zainteresowanie*.
 _Avoid_: tag, category, theme
 
 **AI note**:
-Operator-written, verified facts about an Exhibit that ground the Ask more prompt.
+Operator-written, verified facts about an Exhibit that ground the Ask more prompt. In Polish UI: *Notatka AI*.
 _Avoid_: AI notes, prompt notes
 
 ### The visit
 
 **Intake**:
-The short question flow at the start of a Visit that collects the Visitor's Interests and context (e.g. who they are with, how much time).
+The short question flow at the start of a Visit that collects the Visitor's Interests and context (e.g. who they are with, how much time). In Polish UI: *Pytania startowe*.
 _Avoid_: onboarding, quiz, wizard
 
 **Visit**:
-One anonymous session from Intake onward, recorded for the Instance's museum.
+One anonymous session from Intake onward, recorded for the Instance's museum. In Polish UI: *Wizyta*.
 _Avoid_: session (as a domain term), user session
 
 **Match**:
-An Exhibit recommended to a Visitor for a Visit because it fits their Intake answers.
+An Exhibit recommended to a Visitor for a Visit because it fits their Intake answers. In Polish UI: *Dopasowanie*.
 _Avoid_: result, recommendation (as a noun for a single Exhibit), hit
 
 **Match list**:
-The Matches for a Visit, ordered by relevance and then Gallery order.
+The Matches for a Visit, ordered by relevance and then Gallery order. In Polish UI: *Lista dopasowań*.
 _Avoid_: route, trasa, itinerary
 
+**No-match state**:
+What a Visitor sees when no Exhibit scores above zero: a message, a way to change answers, and the option to browse the whole catalog grouped by Gallery without ranking.
+_Avoid_: empty state, error
+
 **Ask more**:
-The handoff from an Exhibit to an external AI provider with a prompt about that Exhibit.
+The handoff from an Exhibit to an external AI provider with a prompt about that Exhibit. In Polish UI: *Zapytaj więcej*.
 _Avoid_: AI chat, chatbot
 
 ### Reporting
 
 **Visit export**:
-A CSV of anonymised Visit data the Operator downloads to share with the museum. A filterable dashboard is a later addition.
+A CSV of anonymised Visit data the Operator downloads to share with the museum. A filterable dashboard is a later addition. In Polish UI: *Eksport wizyt*.
 _Avoid_: report, analytics
 
 ## Out of scope by definition

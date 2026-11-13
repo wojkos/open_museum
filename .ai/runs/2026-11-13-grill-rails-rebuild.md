@@ -21,3 +21,11 @@ User asked to expand the questions; then told the run to proceed autonomously, s
 
 ## Round 2 answers from the user
 Q9-Q12, Q14 yes. Corrections: Q13 use a ready-made admin gem (ADR 0004 updated); Q15 option (a) signed session cookie (ADR 0009 rewritten, Visit link term removed); Q16 CSV export now, filterable dashboard later (glossary: Visit export); Q17 keep SQLite but leave deployment/CD open, issue #1 created (ADR 0007 rewritten, Kamal/VPS dropped). Q18-Q21 not answered: recommended answers kept.
+
+## Round 3 (Q22-Q35, Polish) - recommended answers adopted (user: proceed autonomously)
+- Q22-Q25 confirmed: MIT public core, seeds only, English docs, v1 non-goals.
+- Q26 config split (ADR 0010); Q27 Exhibits have published flag, matcher ignores drafts; Q28 explicit no-match state + browse-all (logged as Visit event); Q29 resume Visit < 12h (ADR 0009); Q30 Administrate provisional, spike first (ADR 0004); Q31 Mobility (ADR 0011).
+- Q32 Rails 8 rate_limit on Visit/event creation, noindex on Visit screens, server-side input validation, no CAPTCHA.
+- Q33 editable privacy notice, no consent button; "do not store my Visit" outside v1 (Instance question).
+- Q34 Minitest, Capybara system test for Intake->Ask more, RuboCop, Brakeman, bundler-audit on GitHub Actions CI (no deploy; see #1). Rails run through Docker (see lessons).
+- Q35 axe-core in system tests for key screens, local fonts/scripts, no external CDNs; response-time budget set in spec after a measurement.
