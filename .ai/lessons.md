@@ -13,6 +13,7 @@ Index of lessons learned. Read before starting work; append after every bug fix,
 ## Lessons
 
 <!-- newest first -->
+- 2026-11-14 — Agent flows must end in a PR (workflow `github.draft-pr` node), and implementation runs as separate root tasks off `main` (`matt-implement`, 2 slots), never as children of an orchestrator; start flows with their workflow, not `quick-task` + `/skill` (user correction).
 - 2026-11-13 — On gh < 2.94 (host has 2.45) `--blocked-by`/`--parent` do not exist: use `gh api` POST `issues/<n>/dependencies/blocked_by -F issue_id=<db id>` and `issues/<epic>/sub_issues -F sub_issue_id=<db id>`.
 - 2026-11-13 — When a prerequisite spike is unfinished, write the spec with an explicit gate on it instead of blocking; list the spike as an open item.
 - 2026-11-13 — Keep the DESIGN.md focus ring in the Text colour; the prototype's Border-colour ring was too faint for AA.
