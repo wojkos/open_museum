@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Run the repo's CI (bin/ci) the way an agent session can: on the host if Ruby is
+# installed, otherwise in the ruby:3.4 image as the host uid (lesson 2026-11-13: the
+# host has no Ruby; gems need a mounted GEM_HOME and an existing HOME).
+# Used by the `tests` check node of .ai/cezar/workflows/matt-implement.yaml.
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+
+cmd=("$@")
+[ ${#cmd[@]} -eq 0 ] && cmd=(bin/ci)
+
+if command -v ruby >/dev/null 2>&1; then
+  bundle install --quiet
+  exec "${cmd[@]}"
+fi
+
+cache="${AGENT_CI_CACHE:-$HOME/.cache/open_museum-ci}"
+mkdir -p "$cache/gems" "$cache/home"
+exec docker run --rm \
+  -u "$(id -u):$(id -g)" \
+  -v "$PWD:/app" -w /app \
+  -v "$cache/gems:/gems" -e GEM_HOME=/gems -e BUNDLE_PATH=/gems \
+  -v "$cache/home:/home/ci" -e HOME=/home/ci \
+  -e CI=true -e RAILS_ENV=test \
+  ruby:3.4 bash -c 'bundle install --quiet && "$@"' _ "${cmd[@]}"

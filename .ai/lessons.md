@@ -13,6 +13,7 @@ Index of lessons learned. Read before starting work; append after every bug fix,
 ## Lessons
 
 <!-- newest first -->
+- 2026-11-14 — Agent flows must end in a PR (workflow `github.draft-pr` node), and implementation runs as separate root tasks off `main` (`matt-implement`, 2 slots), never as children of an orchestrator; start flows with their workflow, not `quick-task` + `/skill` (user correction).
 - 2026-11-13 — When a prerequisite spike is unfinished, write the spec with an explicit gate on it instead of blocking; list the spike as an open item.
 - 2026-11-13 — Keep the DESIGN.md focus ring in the Text colour; the prototype's Border-colour ring was too faint for AA.
 - 2026-11-13 — Administrate 1.0 + Mobility works but needs `administrate-field-active_storage`, Mobility `locale_accessors`, a custom field (partials in `fields/<field_class_underscored>/`) and an `i18n`-scope concern for sort/search; Administrate sort params are `exhibit[order]`, and request tests need `rails test`, not `rails runner` (spike: branch `prototype/administrate-spike`).

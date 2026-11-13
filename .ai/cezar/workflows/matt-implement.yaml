@@ -1,0 +1,200 @@
+version: 2
+name: matt-implement
+description: One GitHub issue, implemented end to end on a fresh branch off main
+  (Matt's /implement -> tdd -> code-review), checked with bin/ci, reviewed in a
+  fresh session, opened as a draft PR, CI-watched, marked ready, then refills the
+  implementation slots. Launched by .ai/cezar/scripts/matt-implement-launch.py.
+nodes:
+  - id: start
+    type: start
+  - id: implement
+    name: Implement (/implement)
+    type: agent
+    prompt: |-
+      /implement {{task}}
+
+      Rules for this session (autonomous, no human in the loop):
+      - Emit CEZ:ISSUE=<the issue number> on its own line first.
+      - Follow AGENTS.md: read .ai/lessons.md, the issue, its epic and the spec it links.
+      - Test-first via the tdd skill; finish with the code-review skill; commit to the current branch.
+      - Run the repo's checks with `script/agent-ci` (Ruby runs in Docker here).
+      - Scope: only what the issue's acceptance criteria ask. If the issue is unclear or
+        blocked by a missing decision, stop, comment on the issue with the question, and fail.
+      - Do NOT push, open a PR or merge: the workflow does that after you.
+      - Log the run in .ai/runs/ and add lessons per AGENTS.md.
+  - id: tests
+    name: bin/ci
+    type: check
+    command: script/agent-ci
+  - id: test_retry
+    type: loop
+    max: 3
+  - id: fix_tests
+    name: Fix failing checks
+    type: agent
+    session:
+      continue: implement
+    prompt: |-
+      `script/agent-ci` failed. Fix the cause (not the test), re-run it, commit.
+
+      {{nodes.tests.output}}
+  - id: review
+    name: Fresh-eyes review (/code-review)
+    type: agent
+    verdicts: [approve, changes]
+    prompt: |-
+      /code-review since main
+
+      Review this branch against the issue in the task below and the spec it links.
+      Answer with verdict `approve` only if it meets the acceptance criteria and the
+      repo standards; otherwise `changes` with a concrete list. Do not edit code.
+
+      {{task}}
+  - id: review_retry
+    type: loop
+    max: 2
+  - id: fix_review
+    name: Address review
+    type: agent
+    session:
+      continue: implement
+    prompt: |-
+      A fresh reviewer asked for changes. Address every point (or explain in the
+      commit message why not), re-run `script/agent-ci`, commit.
+
+      {{nodes.review.summary}}
+  - id: commit
+    type: git.commit
+    message: "Implement issue (matt-implement)"
+  - id: pr
+    name: Draft PR
+    type: github.draft-pr
+  - id: ci
+    name: Wait for CI
+    type: github.wait-ci
+    timeoutMs: 2700000
+  - id: ci_retry
+    type: loop
+    max: 2
+  - id: fix_ci
+    name: Fix CI
+    type: agent
+    session:
+      continue: implement
+    prompt: |-
+      GitHub CI is red on this branch's PR. Inspect it with `gh pr checks` and
+      `gh run view --log-failed`, fix the cause, re-run `script/agent-ci`, commit.
+      Do not push; the workflow pushes.
+  - id: commit_ci
+    type: git.commit
+    message: "Fix CI (matt-implement)"
+  - id: push_ci
+    type: git.push
+  - id: ready
+    name: Mark PR ready
+    type: github.pr-update
+    ready: true
+  - id: done_comment
+    type: github.issue-comment
+    body: "Implementation PR is ready for human review (matt-implement)."
+  - id: refill
+    name: Refill implementation slots
+    type: agent
+    model: haiku
+    prompt: |-
+      Run `python3 .ai/cezar/scripts/matt-implement-launch.py` from the repository root
+      and report its output verbatim. Do nothing else; do not edit files.
+  - id: fail_comment
+    type: github.issue-comment
+    body: "matt-implement could not finish this issue automatically; it stays labelled `in-progress` (stuck). See the cezar task for details, then remove the label to retry."
+  - id: end
+    type: end
+    status: success
+  - id: failed
+    type: end
+    status: failed
+edges:
+  - from: start.next
+    to: implement
+  - from: implement.done
+    to: tests
+  - from: implement.failed
+    to: fail_comment
+  - from: tests.pass
+    to: review
+  - from: tests.fail
+    to: test_retry
+  - from: test_retry.repeat
+    to: fix_tests
+  - from: test_retry.exhausted
+    to: fail_comment
+  - from: fix_tests.done
+    to: tests
+  - from: fix_tests.failed
+    to: fail_comment
+  - from: review.approve
+    to: commit
+  - from: review.changes
+    to: review_retry
+  - from: review.failed
+    to: fail_comment
+  - from: review_retry.repeat
+    to: fix_review
+  - from: review_retry.exhausted
+    to: fail_comment
+  - from: fix_review.done
+    to: tests
+  - from: fix_review.failed
+    to: fail_comment
+  - from: commit.done
+    to: pr
+  - from: commit.nothing
+    to: pr
+  - from: commit.failed
+    to: fail_comment
+  - from: pr.created
+    to: ci
+  - from: pr.failed
+    to: fail_comment
+  - from: ci.green
+    to: ready
+  - from: ci.red
+    to: ci_retry
+  - from: ci.timeout
+    to: done_comment
+  - from: ci.failed
+    to: done_comment
+  - from: ci_retry.repeat
+    to: fix_ci
+  - from: ci_retry.exhausted
+    to: fail_comment
+  - from: fix_ci.done
+    to: commit_ci
+  - from: fix_ci.failed
+    to: fail_comment
+  - from: commit_ci.done
+    to: push_ci
+  - from: commit_ci.nothing
+    to: push_ci
+  - from: commit_ci.failed
+    to: fail_comment
+  - from: push_ci.done
+    to: ci
+  - from: push_ci.failed
+    to: fail_comment
+  - from: ready.done
+    to: done_comment
+  - from: ready.failed
+    to: done_comment
+  - from: done_comment.done
+    to: refill
+  - from: done_comment.failed
+    to: refill
+  - from: refill.done
+    to: end
+  - from: refill.failed
+    to: end
+  - from: fail_comment.done
+    to: failed
+  - from: fail_comment.failed
+    to: failed

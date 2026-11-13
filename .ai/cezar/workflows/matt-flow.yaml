@@ -1,0 +1,68 @@
+version: 2
+name: matt-flow
+description: Entry point for the whole Matt flow. Each run (1) fills the 2
+  implementation slots with ready issues (separate matt-implement tasks off
+  main) and (2) opens gap-filling sessions in waves (grill, spec, tickets,
+  triage, prototype), merges their settled branches and ends with a draft PR.
+nodes:
+  - id: start
+    type: start
+  - id: launch_impl
+    name: Launch implementation sessions
+    type: agent
+    model: haiku
+    prompt: |-
+      Run `python3 .ai/cezar/scripts/matt-implement-launch.py` from the repository root
+      and report its output verbatim. Do nothing else; do not edit files.
+  - id: orchestrate
+    name: Gap-filling sessions
+    type: agent
+    prompt: "{{task}}"
+    skill: matt-flow
+    model: sonnet
+    runner: claude
+  - id: commit
+    name: Commit run log and merges
+    type: git.commit
+    message: "matt-flow: run log, handoffs and merged sessions"
+  - id: has_changes
+    name: Anything to propose?
+    type: if
+    condition:
+      kind: diff-files
+      op: ">"
+      value: 0
+  - id: pr
+    name: Draft PR
+    type: github.draft-pr
+  - id: end
+    type: end
+    status: success
+  - id: failed
+    type: end
+    status: failed
+edges:
+  - from: start.next
+    to: launch_impl
+  - from: launch_impl.done
+    to: orchestrate
+  - from: launch_impl.failed
+    to: orchestrate
+  - from: orchestrate.done
+    to: commit
+  - from: orchestrate.failed
+    to: failed
+  - from: commit.done
+    to: has_changes
+  - from: commit.nothing
+    to: has_changes
+  - from: commit.failed
+    to: failed
+  - from: has_changes.true
+    to: pr
+  - from: has_changes.false
+    to: end
+  - from: pr.created
+    to: end
+  - from: pr.failed
+    to: failed

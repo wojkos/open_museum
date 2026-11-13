@@ -26,8 +26,11 @@
 
 /public/assets
 
-# Local AI tooling state (cezar)
-/.ai/cezar/
+# Local AI tooling state (cezar); workflows, skills and scripts are versioned
+/.ai/cezar/*
+!/.ai/cezar/workflows/
+!/.ai/cezar/skills/
+!/.ai/cezar/scripts/
 
 # Rails master key (never commit)
 /config/*.key

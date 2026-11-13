@@ -1,0 +1,24 @@
+version: 2
+name: matt-implement-start
+description: Entry point for implementation only. Fills up to 2 slots with the
+  oldest unblocked, unclaimed ready-for-agent issues, each launched as its own
+  matt-implement task off main. Task text is ignored.
+nodes:
+  - id: start
+    type: start
+  - id: launch
+    name: Launch implementation sessions
+    type: agent
+    model: haiku
+    prompt: |-
+      Run `python3 .ai/cezar/scripts/matt-implement-launch.py` from the repository root
+      and report its output verbatim (launched issues, stuck issues, candidates).
+      Do nothing else; do not edit files.
+  - id: end
+    type: end
+    status: success
+edges:
+  - from: start.next
+    to: launch
+  - from: launch.done
+    to: end
