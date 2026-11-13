@@ -4,8 +4,8 @@ The prototype left the catalog admin open or behind a shared password. On a publ
 
 The catalog admin UI uses a ready-made admin gem (not hand-built CRUD); it must work behind this single Operator authentication, so gems that force their own user system (e.g. Devise-based) are disfavoured. Gem choice (Administrate, Avo, ...) is settled in the spec.
 
-Provisional gem choice: Administrate, validated by a spike (language tabs, Active Storage). Fallbacks: Avo (free tier), or a hand-built form for Exhibits only.
+Gem choice: Administrate, confirmed by the spike on 2026-11-13 (branch `prototype/administrate-spike`): it works behind the Rails 8 generated authentication with Mobility language tabs and Active Storage photos. Known gaps, all small: Administrate 1.0 needs the `administrate-field-active_storage` gem; Mobility needs the `locale_accessors` plugin; a custom `TranslatedField` (~40 lines) renders the language tabs; sorting and searching translated fields needs ~25 lines of glue using Mobility's `i18n` scope (search matches the current locale only); the Exhibit index has an N+1 to fix with `.includes`. Fallbacks, not needed: Avo (free tier), or a hand-built form for Exhibits only.
 
 Confirmed by the user: Administrate; no password reset by email (recovery = change credentials and restart).
 
-The Administrate spike (Mobility language tabs, Active Storage uploads) runs before `/to-spec`; its result feeds the spec.
+The spike result feeds the spec.

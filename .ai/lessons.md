@@ -13,6 +13,7 @@ Index of lessons learned. Read before starting work; append after every bug fix,
 ## Lessons
 
 <!-- newest first -->
+- 2026-11-13 — Administrate 1.0 + Mobility works but needs `administrate-field-active_storage`, Mobility `locale_accessors`, a custom field (partials in `fields/<field_class_underscored>/`) and an `i18n`-scope concern for sort/search; Administrate sort params are `exhibit[order]`, and request tests need `rails test`, not `rails runner` (spike: branch `prototype/administrate-spike`).
 - 2026-11-13 — Polish for Exhibit is *Eksponat*, never *Ekspozycja* (exposition); check the glossary before translating domain terms.
 - 2026-11-13 — Do not add an Exhibit draft/published state; every Exhibit is visible and may lack a description (user decision).
 - 2026-11-13 — First Instance deploys to Fly.io, CI only, no auto-CD yet (issue #1, ADR 0007); the scaffold's Kamal is not the chosen path.
