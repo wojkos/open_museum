@@ -50,3 +50,7 @@ Remaining open: consent/legal wording, admin gem spike, response-time budget, de
 - AI providers: ChatGPT link by default; others by editing the provider link template.
 - Naming: product/repo stays Open Museum; museum name and tagline are Instance data. DESIGN.md for Rails and default PL/EN copy are written at /to-spec.
 - Lessons added to .ai/lessons.md for user corrections.
+
+## Round 6 (answered via ask-user card)
+Confirmed: Administrate, Mobility, retention 12 months, four Intake questions, hidden Audience Galleries, no email reset, single AI link + copy.
+Changed: export is raw-anonymous only (no aggregated mode, no minimum group size setting); system specs use Selenium (not Cuprite); consent is an explicit checkbox before Intake (ADR 0003 amended, glossary term Consent) - without consent the Visit is not stored but Matches still work.

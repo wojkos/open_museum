@@ -5,3 +5,5 @@ A Visit is keyed by a random id with no Visitor account. It stores Intake answer
 Switching language must not lose in-progress answers, so answers persist on the Visit.
 
 Default retention is 12 months (configurable per Instance, ADR 0010); a daily job deletes older Visits with their events.
+
+Amended: before Intake the Visitor sees an editable notice with a consent checkbox. Without consent the Visitor still gets Matches, but the Visit and its events are not stored (answers live only in the signed session for the running flow). Legal wording and basis remain Instance policy. A consent banner for cookies is still not needed because only the strictly necessary session cookie is used.

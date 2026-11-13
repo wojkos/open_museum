@@ -5,3 +5,5 @@ The prototype left the catalog admin open or behind a shared password. On a publ
 The catalog admin UI uses a ready-made admin gem (not hand-built CRUD); it must work behind this single Operator authentication, so gems that force their own user system (e.g. Devise-based) are disfavoured. Gem choice (Administrate, Avo, ...) is settled in the spec.
 
 Provisional gem choice: Administrate, validated by a spike (language tabs, Active Storage). Fallbacks: Avo (free tier), or a hand-built form for Exhibits only.
+
+Confirmed by the user: Administrate; no password reset by email (recovery = change credentials and restart).

@@ -62,6 +62,10 @@ _Avoid_: route, trasa, itinerary
 What a Visitor sees when no Exhibit scores above zero: an explicit notice that no personalised selection could be made, followed automatically by the full list of Exhibits grouped by Gallery without ranking. In Polish UI: *brak dopasowań*.
 _Avoid_: empty state, error
 
+**Consent**:
+The Visitor's explicit tick, before Intake, allowing their Visit to be stored. Without it the Visitor still gets Matches, but nothing about the Visit is stored beyond the running flow.
+_Avoid_: opt-in, cookie banner
+
 **Ask more**:
 The handoff from an Exhibit to an external AI provider with a prompt about that Exhibit. In Polish UI: *Zapytaj więcej*.
 _Avoid_: AI chat, chatbot
@@ -69,11 +73,11 @@ _Avoid_: AI chat, chatbot
 ### Reporting
 
 **Visit export**:
-A CSV the Operator downloads to share Visit data with the museum, either aggregated (only groups of at least 5 Visits) or raw-anonymous (one line per Visit with no Visit id and a rounded time). A filterable dashboard is a later addition. In Polish UI: *Eksport wizyt*.
+A CSV the Operator downloads to share Visit data with the museum, raw and anonymous: one line per Visit, with no Visit id and a rounded time. A filterable dashboard is a later addition. In Polish UI: *Eksport wizyt*.
 _Avoid_: report, analytics
 
 ## Out of scope by definition
 
 - A **route** (ordered walking path) and turn-by-turn indoor navigation are not part of the product yet; a Match list is not a route.
 - In-app AI chat, native app, offline/PWA, Visitor accounts, editable Intake questions a Visit dashboard (CSV export only at first) and CSV catalog import are outside the first version.
-- Consent wording, retention period, and how a museum receives Visit data are Instance policy, not decided here.
+- The legal wording of the consent text and the legal basis for sharing Visit data with a museum are Instance policy, not decided here.
