@@ -35,3 +35,7 @@ Q22-Q25 yes; Q26 option (c). Corrections: Q27 no draft/published state - every E
 
 ## Round 4
 User chose RSpec over Minitest (Q34 revised; ADR 0012). Round 4 questions asked on RSpec toolchain; scaffold currently has test/ and CI running `rails test`.
+
+## Round 4 answers (Q36-Q45) - recommended answers adopted (user: proceed autonomously)
+Q36 FactoryBot; Q37 spec/domain without Rails, request + system specs; Q38 Cuprite; Q39 axe-core-rspec fails CI on AA; Q40 shoulda-matchers, rubocop-rspec, i18n-tasks, SimpleCov informational, no VCR/WebMock; Q41 domain test-first, rule added to AGENTS.md; Q42 retention 12 months; Q43 Visit export two modes (aggregated >=5, raw anonymous); Q44 editable prompt template with required AI note placeholder, UI language; Q45 first release as thin vertical slice; order: skeleton+RSpec+CI+seeds, Visitor flow, Operator panel, Visit events+export, retention (tickets later via /to-tickets after /to-spec).
+Remaining open: consent/legal wording, admin gem spike, response-time budget, deployment (#1).

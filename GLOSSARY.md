@@ -65,7 +65,7 @@ _Avoid_: AI chat, chatbot
 ### Reporting
 
 **Visit export**:
-A CSV of anonymised Visit data the Operator downloads to share with the museum. A filterable dashboard is a later addition. In Polish UI: *Eksport wizyt*.
+A CSV the Operator downloads to share Visit data with the museum, either aggregated (only groups of at least 5 Visits) or raw-anonymous (one line per Visit with no Visit id and a rounded time). A filterable dashboard is a later addition. In Polish UI: *Eksport wizyt*.
 _Avoid_: report, analytics
 
 ## Out of scope by definition
