@@ -39,3 +39,14 @@ User chose RSpec over Minitest (Q34 revised; ADR 0012). Round 4 questions asked 
 ## Round 4 answers (Q36-Q45) - recommended answers adopted (user: proceed autonomously)
 Q36 FactoryBot; Q37 spec/domain without Rails, request + system specs; Q38 Cuprite; Q39 axe-core-rspec fails CI on AA; Q40 shoulda-matchers, rubocop-rspec, i18n-tasks, SimpleCov informational, no VCR/WebMock; Q41 domain test-first, rule added to AGENTS.md; Q42 retention 12 months; Q43 Visit export two modes (aggregated >=5, raw anonymous); Q44 editable prompt template with required AI note placeholder, UI language; Q45 first release as thin vertical slice; order: skeleton+RSpec+CI+seeds, Visitor flow, Operator panel, Visit events+export, retention (tickets later via /to-tickets after /to-spec).
 Remaining open: consent/legal wording, admin gem spike, response-time budget, deployment (#1).
+
+## Round 5 gaps (user: proceed autonomously) - defaults chosen, refine in /to-spec
+- Intake: Interests (multi), companion (alone/couple/family/group), time budget (short/medium/long), kids under 6 (shown only for family). Starter Interests are Instance data; the fictional seed uses about 6.
+- Matcher weights: Interest overlap dominates; bonuses are small constants; exact numbers fixed in spec by tests (spread, 3-level order, non-empty per single Interest).
+- Audience (new glossary term): Gallery optional audience `kids under 6`; excluded from Matches unless the Visit says kids under 6; excluded from the no-match full list too unless kids under 6. Set by the Operator.
+- Operator account: credentials from env/credentials, no email password reset (remove the Rails auth reset flow); recovery = change credentials and restart. 
+- Photos: JPEG/PNG/WebP up to 5 MB, resized variants via image_processing; rights are the Operator's responsibility.
+- rate_limit: starting values about 30 Visit creations and 120 events per minute per IP, tuned after measuring.
+- AI providers: ChatGPT link by default; others by editing the provider link template.
+- Naming: product/repo stays Open Museum; museum name and tagline are Instance data. DESIGN.md for Rails and default PL/EN copy are written at /to-spec.
+- Lessons added to .ai/lessons.md for user corrections.

@@ -28,6 +28,10 @@ _Avoid_: item, eksponat (outside Polish UI copy), installation
 A named area of the museum that holds Exhibits, with a floor label and a place in the visiting order. In Polish UI: *Galeria*.
 _Avoid_: exhibition part, exhibition, zone, section
 
+**Audience**:
+An optional restriction on a Gallery to a kind of Visitor (for example families with children under 6); a Gallery with an Audience yields no Matches for other Visits.
+_Avoid_: age group, kids zone
+
 **Interest**:
 A topic a Visitor can pick (e.g. "engineering"); Exhibits are associated with Interests. In Polish UI: *Zainteresowanie*.
 _Avoid_: tag, category, theme
