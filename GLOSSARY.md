@@ -55,7 +55,7 @@ The Matches for a Visit, ordered by relevance and then Gallery order. In Polish 
 _Avoid_: route, trasa, itinerary
 
 **No-match state**:
-What a Visitor sees when no Exhibit scores above zero: a message, a way to change answers, and the option to browse the whole catalog grouped by Gallery without ranking.
+What a Visitor sees when no Exhibit scores above zero: an explicit notice that no personalised selection could be made, followed automatically by the full list of Exhibits grouped by Gallery without ranking. In Polish UI: *brak dopasowań*.
 _Avoid_: empty state, error
 
 **Ask more**:

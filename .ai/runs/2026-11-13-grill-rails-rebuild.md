@@ -29,3 +29,6 @@ Q9-Q12, Q14 yes. Corrections: Q13 use a ready-made admin gem (ADR 0004 updated);
 - Q33 editable privacy notice, no consent button; "do not store my Visit" outside v1 (Instance question).
 - Q34 Minitest, Capybara system test for Intake->Ask more, RuboCop, Brakeman, bundler-audit on GitHub Actions CI (no deploy; see #1). Rails run through Docker (see lessons).
 - Q35 axe-core in system tests for key screens, local fonts/scripts, no external CDNs; response-time budget set in spec after a measurement.
+
+## Round 3 user answers (Q22-Q29)
+Q22-Q25 yes; Q26 option (c). Corrections: Q27 no draft/published state - every Exhibit is visible, an Exhibit without a description is valid (name still required; missing translations fall back to the default language); Q28 no-match shows an explicit notice that personalised matching failed and automatically lists all Exhibits (no extra click; the event is still recorded on the Visit); Q29 Visit resume window is 48 hours (ADR 0009). Q30-Q35: recommended answers stand.
