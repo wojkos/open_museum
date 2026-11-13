@@ -29,6 +29,7 @@ Naming: `YYYY-MM-DD-slug.md`, lowercase kebab-case slug, date = creation date (t
 
 - **Plan complex tasks.** For anything multi-step or ambiguous, plan before coding: state the approach, affected files and how you will verify. Keep the plan in the spec or run log. If the work goes sideways, stop and re-plan rather than pushing on.
 - **Verify every change.** Run the project's tests, linters and build (or the real app) before declaring done, and report actual output. Never claim success unverified; if something cannot be verified, say so.
+- **Tests are RSpec** (`spec/`, ADR 0012). Domain logic (`spec/domain`, no Rails loaded) is test-first; views and forms get tests alongside the feature.
 - **Fix bugs autonomously.** Given a bug or failing CI, reproduce, find the root cause, fix and verify without waiting for step-by-step direction. Add a regression test where practical.
 - **Be specific, resolve ambiguity.** Ask only when a decision is truly the user's; otherwise pick a sensible default and note it in the run log.
 - **Prefer elegant fixes.** If a fix turns out to be a workaround, redo it properly with what you now know instead of stacking patches.
@@ -40,6 +41,10 @@ Naming: `YYYY-MM-DD-slug.md`, lowercase kebab-case slug, date = creation date (t
 ### Issue tracker
 
 GitHub Issues for `wojkos/open_museum`, via the `gh` CLI. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default vocabulary: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
 
 ### Domain docs
 
