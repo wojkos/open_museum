@@ -4,7 +4,7 @@ Instructions for AI coding agents working in this repository (Open Museum). `CLA
 
 ## Project metadata: `.ai/`
 
-All AI-related artifacts live in `.ai/`. Use them; do not invent other locations.
+All AI-related artifacts live in `.ai/`. Use them; do not invent other locations. Exception: the engineering-skills configuration (issue tracker, domain docs) lives in `docs/agents/` and is referenced from the `## Agent skills` section below.
 
 ```
 .ai/
@@ -34,3 +34,13 @@ Naming: `YYYY-MM-DD-slug.md`, lowercase kebab-case slug, date = creation date (t
 - **Prefer elegant fixes.** If a fix turns out to be a workaround, redo it properly with what you now know instead of stacking patches.
 - **Keep context clean.** Delegate research and independent subtasks to subagents. Use separate git worktrees for parallel work on disjoint areas.
 - **Repeat work becomes a skill.** If a procedure is done repeatedly, propose a committed skill or command for it.
+
+## Agent skills
+
+### Issue tracker
+
+GitHub Issues for `wojkos/open_museum`, via the `gh` CLI. See `docs/agents/issue-tracker.md`.
+
+### Domain docs
+
+Single-context: `GLOSSARY.md` and `docs/adr/` at the repo root (created lazily). See `docs/agents/domain.md`.
