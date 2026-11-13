@@ -61,3 +61,10 @@ Changed: export is raw-anonymous only (no aggregated mode, no minimum group size
 - Response-time budget: measure after the first slice, no number in the spec.
 - CNK data: collected in a sheet, entered manually through the Administrate panel; no CSV import.
 - Prerequisite before /to-spec: spike Administrate with Mobility language tabs and Active Storage (not yet done).
+
+## Round 8 (session 8ec65b60, grill+spec, answered via card)
+- Consent default text approved as drafted (PL/EN, with the 12-month figure, neutral; Instance edits it).
+- Test seams: three (Visitor-flow system spec, domain Matcher spec, Operator and export request specs).
+- Visit export time is rounded to the hour.
+- Spike: wait for the Administrate spike handoff before writing the spec. At 2026-11-13 the sibling (84afb07c) had written no handoff and no findings.
+- Human then told the session to proceed autonomously; spec written to `.ai/specs/2026-11-13-rails-rebuild.md` with slice 3 gated on the spike. DESIGN.md written at repo root. Handoff in `.ai/handoffs/`. Spec is not published to the issue tracker (task order scopes it to a file).
