@@ -1,6 +1,6 @@
 # Spec: Open Museum Rails rebuild
 
-- Status: draft, settled by grilling rounds 1–8 (`.ai/runs/2026-11-13-grill-rails-rebuild.md`); one gate open (Administrate spike)
+- Status: draft, settled by grilling rounds 1–8 (`.ai/runs/2026-11-13-grill-rails-rebuild.md`); Administrate spike closed: GO
 - Terms: `GLOSSARY.md`. Decisions: `docs/adr/0001`–`0012`. Design: `DESIGN.md`. Source material: `docs/source/cnk_kompas/`.
 - Next: `/to-tickets` on this file.
 
@@ -90,7 +90,7 @@ Maintainer
 **Vertical slices (order, from Q45).**
 1. Skeleton: Rails app, RSpec toolchain, CI, design tokens and layout, Instance settings, seeds.
 2. Visitor flow: Consent, Intake, Matcher, Match list, no-match, Exhibit detail, Ask more.
-3. Operator panel: authentication, catalog and settings CRUD, photos. **Gated on the Administrate spike** (see Open items).
+3. Operator panel: authentication, catalog and settings CRUD, photos. Administrate spike is GO; carry the six gaps in Open items.
 4. Visit events and Visit export.
 5. Retention job.
 Slices 2 and 3 can start before 3's gate if the seeds are enough for the Visitor flow; each slice ends in a working, tested flow.
@@ -139,7 +139,7 @@ Route or turn-by-turn navigation; in-app AI chat; native app; offline/PWA; Visit
 ## Further Notes
 
 **Open items**
-- **Administrate spike** (sibling task `84afb07c`, handoff expected at `.ai/handoffs/2026-11-13-prototype-administrate-spike.md`) had not reported when this spec was written. Slice 3 is gated on it. If Administrate with Mobility language tabs and Active Storage is no-go, fall back per ADR 0004 (Avo free tier, or a hand-built form for Exhibits only) and update ADR 0004/0011.
+- **Administrate spike: GO** (`.ai/handoffs/2026-11-13-prototype-administrate-spike.md`, ADR 0004). Slice 3 tasks: (1) add `administrate-field-active_storage`; (2) Mobility `locale_accessors` with languages from Instance config; (3) custom `TranslatedField` + partials in `app/views/fields/translated_field/`; (4) controller concern for translated sort/search via `i18n` scope (sort params are `exhibit[order]`; search is current-locale only); (5) `.includes` to avoid index N+1; (6) accept maintaining this custom glue.
 - Response-time budget: after the first slice.
 - Deployment automation and backups: issue #1.
 - Exact Matcher constants: fixed by tests in slice 2.
