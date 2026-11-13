@@ -7,3 +7,5 @@ The catalog admin UI uses a ready-made admin gem (not hand-built CRUD); it must 
 Provisional gem choice: Administrate, validated by a spike (language tabs, Active Storage). Fallbacks: Avo (free tier), or a hand-built form for Exhibits only.
 
 Confirmed by the user: Administrate; no password reset by email (recovery = change credentials and restart).
+
+The Administrate spike (Mobility language tabs, Active Storage uploads) runs before `/to-spec`; its result feeds the spec.

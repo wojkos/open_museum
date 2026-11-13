@@ -54,3 +54,10 @@ Remaining open: consent/legal wording, admin gem spike, response-time budget, de
 ## Round 6 (answered via ask-user card)
 Confirmed: Administrate, Mobility, retention 12 months, four Intake questions, hidden Audience Galleries, no email reset, single AI link + copy.
 Changed: export is raw-anonymous only (no aggregated mode, no minimum group size setting); system specs use Selenium (not Cuprite); consent is an explicit checkbox before Intake (ADR 0003 amended, glossary term Consent) - without consent the Visit is not stored but Matches still work.
+
+## Round 7 (ask-user card)
+- Consent is mandatory: no access without ticking the checkbox (supersedes the optional-consent variant); legal text is an Instance concern with a neutral default.
+- First Instance on Fly.io; CI only for now, manual deploys; auto-CD and backups stay open in #1 (ADR 0007).
+- Response-time budget: measure after the first slice, no number in the spec.
+- CNK data: collected in a sheet, entered manually through the Administrate panel; no CSV import.
+- Prerequisite before /to-spec: spike Administrate with Mobility language tabs and Active Storage (not yet done).

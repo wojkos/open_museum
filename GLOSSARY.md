@@ -63,7 +63,7 @@ What a Visitor sees when no Exhibit scores above zero: an explicit notice that n
 _Avoid_: empty state, error
 
 **Consent**:
-The Visitor's explicit tick, before Intake, allowing their Visit to be stored. Without it the Visitor still gets Matches, but nothing about the Visit is stored beyond the running flow.
+The Visitor's explicit tick, required before Intake, allowing their Visit to be stored. Without it the Visitor cannot use the app.
 _Avoid_: opt-in, cookie banner
 
 **Ask more**:

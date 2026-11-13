@@ -7,3 +7,5 @@ Switching language must not lose in-progress answers, so answers persist on the 
 Default retention is 12 months (configurable per Instance, ADR 0010); a daily job deletes older Visits with their events.
 
 Amended: before Intake the Visitor sees an editable notice with a consent checkbox. Without consent the Visitor still gets Matches, but the Visit and its events are not stored (answers live only in the signed session for the running flow). Legal wording and basis remain Instance policy. A consent banner for cookies is still not needed because only the strictly necessary session cookie is used.
+
+Superseded detail: consent is mandatory, not optional. A Visitor who does not tick the checkbox cannot proceed to Intake, so every stored Visit has consent and no consent-less code path exists. The consent text is an editable Instance notice with a neutral default; its legal wording is the Instance's responsibility.
