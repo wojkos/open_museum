@@ -13,6 +13,8 @@ Index of lessons learned. Read before starting work; append after every bug fix,
 ## Lessons
 
 <!-- newest first -->
+- 2026-11-13 — When a prerequisite spike is unfinished, write the spec with an explicit gate on it instead of blocking; list the spike as an open item.
+- 2026-11-13 — Keep the DESIGN.md focus ring in the Text colour; the prototype's Border-colour ring was too faint for AA.
 - 2026-11-13 — Polish for Exhibit is *Eksponat*, never *Ekspozycja* (exposition); check the glossary before translating domain terms.
 - 2026-11-13 — Do not add an Exhibit draft/published state; every Exhibit is visible and may lack a description (user decision).
 - 2026-11-13 — First Instance deploys to Fly.io, CI only, no auto-CD yet (issue #1, ADR 0007); the scaffold's Kamal is not the chosen path.
