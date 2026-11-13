@@ -32,3 +32,6 @@ Q9-Q12, Q14 yes. Corrections: Q13 use a ready-made admin gem (ADR 0004 updated);
 
 ## Round 3 user answers (Q22-Q29)
 Q22-Q25 yes; Q26 option (c). Corrections: Q27 no draft/published state - every Exhibit is visible, an Exhibit without a description is valid (name still required; missing translations fall back to the default language); Q28 no-match shows an explicit notice that personalised matching failed and automatically lists all Exhibits (no extra click; the event is still recorded on the Visit); Q29 Visit resume window is 48 hours (ADR 0009). Q30-Q35: recommended answers stand.
+
+## Round 4
+User chose RSpec over Minitest (Q34 revised; ADR 0012). Round 4 questions asked on RSpec toolchain; scaffold currently has test/ and CI running `rails test`.
